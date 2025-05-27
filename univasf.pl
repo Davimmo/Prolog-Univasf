@@ -11,9 +11,9 @@
         %Segundo Período
             cargaHoraria('GA',60).
             cargaHoraria('C_2',60).
-            cargaHoraria('Fis_1',60).
+            cargaHoraria('fis_1',60).
             cargaHoraria('AED',60).
-            cargaHoraria('elt_dig'60).
+            cargaHoraria('elt_dig',60).
             cargaHoraria('LED',30).
 
         %Terceiro Periodo
@@ -95,13 +95,13 @@
             %Algoritimo e Estrutura de dados
             preRequesito('AED','alg_prog').
             %Eletrônica digital
-            preRequesito('int_eng_comp','eletronica_digital').
+            preRequesito('int_eng_comp','elt_dig').
 
         %Terceiro Período
             %Lógica para computação
             preRequesito('discreta','logica').
             %Física Teórica 2
-            preRequesito('fis1','fis2').
+            preRequesito('fis_1','fis_2').
             %Organização e Arquitetura de computadores
             preRequesito('elt_dig','OAC').
             %Laboratório de Organização e Arquitetura de computadores
@@ -131,7 +131,7 @@
             %Analise de Sinais e sistemas
             preRequisito('C_4', 'sinais').
             %Engenharia de software
-            preRequisito('POO','eng-soft_1').
+            preRequisito('POO','eng_soft_1').
             %Redes de Computadores
             preRequisito('OAC','redes').
             %Sistemas Microcontrolados
@@ -178,7 +178,7 @@
             %Sistemas de controle 2
             preRequisito('sis_ctr_1','sis_ctr_2').
             %Metodologia
-            preRequisito('com_exp','metodologia').
+            preRequisito('com_exp','met_pesq').
             %Modelagem
             preRequisito('estatistica','modelagem').  
             preRequisito('OAC','modelagem').
@@ -189,17 +189,17 @@
 
         %Nono Período
             %Trabalho de conclusão de curso 2
-            preRequisito('TCC_2','TCC_1').
+            preRequisito('TCC_1','TCC_2').
             %Avaliação e desenvolvimento de sistemas
             preRequisito('modelagem','aval_sist').
-            preRrequisito('redes','aval_sist').
-            preRequisito('distribuitos_1','aval_sist').
+            preRequisito('redes','aval_sist').
+            preRequisito('distribuidos_1','aval_sist').
 
 
 
     %Co-Requesitos
         coRequesito('circuitos','LCE').
-        coRequesito('elt_dig','lab_eletronica').
+        coRequesito('elt_dig','LED').
         coRequesito('OAC','LOAC').
 
 %Regras

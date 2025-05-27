@@ -26,11 +26,11 @@ Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os 
 | Eletrônica Analógica                                     | `analogica`        |
 | Eletrônica Digital                                       | `elt_dig`          |
 | Empreendedorismo                                         | `empreendedorismo` |
-| Engenharia de Software 1                                 | `eng_soft`         |
+| Engenharia de Software 1                                 | `eng_soft_1`         |
 | Engenharia de Software 2                                 | `eng_soft_2`       |
 | Estatística e Probabilidade                              | `estatistica`      |
 | Estágio Supervisionado                                   | `estagio`          |
-| Física 1                                                 | `Fis_1`            |
+| Física 1                                                 | `fis_1`            |
 | Física 2                                                 | `fis_2`            |
 | Física 3                                                 | `fis_3`            |
 | Física Experimental                                      | `fis_exp`          |
@@ -63,7 +63,7 @@ Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os 
 | Sistemas Distribuídos 1                                  | `distribuidos_1`   |
 | Sistemas Microcontrolados                                | `micro`            |
 | Sistemas Operacionais                                    | `SO`               |
-| Teoria da Computação                                     | `teoria_comp`      |
+| Teoria da Computação                                     | `teo_comp`      |
 | Trabalho de Conclusão de Curso 1                         | `TCC_1`            |
 | Trabalho de Conclusão de Curso 2                         | `TCC_2`            |
 
