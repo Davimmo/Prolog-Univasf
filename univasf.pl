@@ -9,7 +9,7 @@
             cargaHoraria('discreta',60).
 
         %Segundo Período
-            cargaHoraria('GA',60).
+            cargaHoraria('algebra',60).
             cargaHoraria('C_2',60).
             cargaHoraria('fis_1',60).
             cargaHoraria('AED',60).
@@ -41,7 +41,6 @@
             cargaHoraria('micro',60).
             cargaHoraria('sinais',60).
             cargaHoraria('BD_1',60).
-            cargaHoraria('eng_soft_1',60).
             cargaHoraria('eng_soft_1',60).
     
         %Sexto Período
@@ -113,7 +112,7 @@
             % Calculo Numerico
             preRequisito('C_1', 'calc_num').
             preRequisito('algebra', 'calc_num').
-            preRequisito('alg_prog', 'calc_Num').
+            preRequisito('alg_prog', 'calc_num').
             % Estatistica
             preRequisito('C_1', 'estatistica').
             % Eletronica Analogica
@@ -195,12 +194,13 @@
             preRequisito('redes','aval_sist').
             preRequisito('distribuidos_1','aval_sist').
 
-
-
     %Co-Requesitos
         coRequesito('circuitos','LCE').
         coRequesito('elt_dig','LED').
         coRequesito('OAC','LOAC').
+
+    %Alunos
+
 
 %Regras
     ePreRequesito(X, Y) :- 
