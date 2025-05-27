@@ -55,7 +55,7 @@
         
         %Sétimo Período
             cargaHoraria('telecom',60).
-            cargaHoraria('sis_ctr',60).
+            cargaHoraria('sis_ctr_1',60).
             cargaHoraria('comp_graf',60).
             cargaHoraria('meio_ambiente',30).
             cargaHoraria('compiladores',60).
@@ -64,11 +64,11 @@
         
         %Oitavo Périodo
             cargaHoraria('asp_legais',30).
-            cargaHoraria('sis_ctr',60).
+            cargaHoraria('sis_ctr_2',60).
             cargaHoraria('TCC_1',60).
             cargaHoraria('met_pesq',30).
             cargaHoraria('modelagem',60).
-            cargaHoraria('teoria_comp',60).
+            cargaHoraria('teo_comp',60).
             cargaHoraria('optativa_1',60).
         
         %Nono Período
@@ -193,7 +193,7 @@
             %Avaliação e desenvolvimento de sistemas
             preRequisito('modelagem','aval_sist').
             preRrequisito('redes','aval_sist').
-            preRequisito('distribuitos','aval_sist').
+            preRequisito('distribuitos_1','aval_sist').
 
 
 
