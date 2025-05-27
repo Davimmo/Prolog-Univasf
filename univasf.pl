@@ -3,9 +3,10 @@
         %Primeiro Período
             cargaHoraria('GA',60).
             cargaHoraria('C_1',60).
-            cargaHoraria('cum_expr',60).
+            cargaHoraria('com_expr',60).
             cargaHoraria('alg_prog',90).
             cargaHoraria('int_eng',30).
+            cargaHoraria('discreta',60).
 
         %Segundo Período
             cargaHoraria('GA',60).
@@ -25,7 +26,7 @@
             cargaHoraria('LOAC',30).
 
         %Quarto Período
-            cargaHoraria('cal_num',60).
+            cargaHoraria('calc_num',60).
             cargaHoraria('C_4',60).
             cargaHoraria('fis_3',60).
             cargaHoraria('analogica',60).
@@ -40,8 +41,8 @@
             cargaHoraria('micro',60).
             cargaHoraria('sinais',60).
             cargaHoraria('BD_1',60).
-            cargaHoraria('eng_soft',60).
-            cargaHoraria('eng_soft',60).
+            cargaHoraria('eng_soft_1',60).
+            cargaHoraria('eng_soft_1',60).
     
         %Sexto Período
             cargaHoraria('distribuidos_1',60).
@@ -76,7 +77,7 @@
             cargaHoraria('TCC_2',60).
             cargaHoraria('nucleo_tematico',120).
             cargaHoraria('optativa_2',60).
-            cargaHoraria('avl_des_sis',60).
+            cargaHoraria('aval_sist',60).
 
         %Décimo Período
             cargaHoraria('eletiva_2',60).
@@ -123,7 +124,7 @@
             preRequisito('fis_2', 'fis_3').
             preRequisito('C_2', 'fis_3').
             % POO
-            preRequisito('algo_prog','POO').
+            preRequisito('alg_prog','POO').
 
 
         % Quinto Período
@@ -134,7 +135,7 @@
             %Redes de Computadores
             preRequisito('OAC','redes').
             %Sistemas Microcontrolados
-            preRequisito('algo_prog','micro').
+            preRequisito('alg_prog','micro').
             preRequisito('analogica','micro').
             preRequisito('LEA','micro').
             preRequisito('OAC','micro').
@@ -146,14 +147,14 @@
             %Banco de dados 2
             preRequisito('BD_1','BD_2').
             %Engenharia de Software 2
-            preRequisito('eng_soft1','eng_soft2').
+            preRequisito('eng_soft_1','eng_soft_2').
             %Instrumentação Eletrônica
             preRequisito('micro','IE').
             %Inteligência Artificial
             preRequisito('AED','IA').
             preRequisito('logica','IA').
             %Linguagens formais e Autômatos
-            preRequisito('algo_prog','LFA').
+            preRequisito('alg_prog','LFA').
             preRequisito('discreta','LFA').
             %Sistemas Distribuídos 1
             preRequisito('SO','distribuidos_1').
@@ -164,31 +165,31 @@
             %Principios de telecom
             preRequisito('sinais','telecom').
             %Sistemas de controle 1
-            preRequisito('sinais','sist_cont1').
+            preRequisito('sinais','sis_ctr_1').
             %Computação gráfica
-            preRequisito('GA','comput_graf').
-            preRequisito('AED','comput_graf').
+            preRequisito('GA','comp_graf').
+            preRequisito('AED','comp_graf').
             %Compiladores
-            preRequisito('LFA','compil').
-            preRequisito('AED','compil').
-            preRequisito('OAC','compil').
+            preRequisito('LFA','compiladores').
+            preRequisito('AED','compiladores').
+            preRequisito('OAC','compiladores').
             
         % Oitavo Período
             %Sistemas de controle 2
-            preRequisito('sist_cont1','sist_cont2').
+            preRequisito('sis_ctr_1','sis_ctr_2').
             %Metodologia
-            preRequisito('comunicacao','metodologia').
+            preRequisito('com_exp','metodologia').
             %Modelagem
             preRequisito('estatistica','modelagem').  
             preRequisito('OAC','modelagem').
-            preRequisito('eng_soft1','modelagem').
+            preRequisito('eng_soft_1','modelagem').
             preRequisito('calc_num','modelagem').
             %Teoria da computação
             preRequisito('LFA','teo_comp').
 
         %Nono Período
             %Trabalho de conclusão de curso 2
-            preRequisito('TCC2','TCC1').
+            preRequisito('TCC_2','TCC_1').
             %Avaliação e desenvolvimento de sistemas
             preRequisito('modelagem','aval_sist').
             preRrequisito('redes','aval_sist').
