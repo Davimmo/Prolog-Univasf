@@ -5,7 +5,7 @@
             cargaHoraria('C_1',60).
             cargaHoraria('com_expr',60).
             cargaHoraria('alg_prog',90).
-            cargaHoraria('int_eng',30).
+            cargaHoraria('int_eng_comp',30).
             cargaHoraria('discreta',60).
 
         %Segundo Período
@@ -95,7 +95,7 @@
             %Algoritimo e Estrutura de dados
             preRequesito('AED','alg_prog').
             %Eletrônica digital
-            preRequesito('int_eng','eletronica_digital').
+            preRequesito('int_eng_comp','eletronica_digital').
 
         %Terceiro Período
             %Lógica para computação
