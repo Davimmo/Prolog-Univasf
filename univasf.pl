@@ -55,7 +55,7 @@
         
         %Sétimo Período
             cargaHoraria('telecom',60).
-            cargaHoraria('sis_ctr_1',60).
+            cargaHoraria('sist_ctr_1',60).
             cargaHoraria('comp_graf',60).
             cargaHoraria('meio_ambiente',30).
             cargaHoraria('compiladores',60).
@@ -64,7 +64,7 @@
         
         %Oitavo Périodo
             cargaHoraria('asp_legais',30).
-            cargaHoraria('sis_ctr_2',60).
+            cargaHoraria('sist_ctr_2',60).
             cargaHoraria('TCC_1',60).
             cargaHoraria('met_pesq',30).
             cargaHoraria('modelagem',60).
@@ -165,7 +165,7 @@
             %Principios de telecom
             preRequisito('sinais','telecom').
             %Sistemas de controle 1
-            preRequisito('sinais','sis_ctr_1').
+            preRequisito('sinais','sist_ctr_1').
             %Computação gráfica
             preRequisito('GA','comp_graf').
             preRequisito('AED','comp_graf').
@@ -176,7 +176,7 @@
             
         % Oitavo Período
             %Sistemas de controle 2
-            preRequisito('sis_ctr_1','sis_ctr_2').
+            preRequisito('sist_ctr_1','sist_ctr_2').
             %Metodologia
             preRequisito('com_exp','met_pesq').
             %Modelagem

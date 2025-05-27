@@ -16,7 +16,7 @@ Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os 
 | Cálculo 1                                                | `C_1`              |
 | Cálculo 2                                                | `C_2`              |
 | Cálculo 4                                                | `C_4`              |
-| Cálculo Numérico                                         | `calc_num`          |
+| Cálculo Numérico                                         | `calc_num`         |
 | Circuitos Elétricos                                      | `circuitos`        |
 | Comunicação e Expressão                                  | `com_expr`         |
 | Compiladores                                             | `compiladores`     |
@@ -26,7 +26,7 @@ Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os 
 | Eletrônica Analógica                                     | `analogica`        |
 | Eletrônica Digital                                       | `elt_dig`          |
 | Empreendedorismo                                         | `empreendedorismo` |
-| Engenharia de Software 1                                 | `eng_soft_1`         |
+| Engenharia de Software 1                                 | `eng_soft_1`       |
 | Engenharia de Software 2                                 | `eng_soft_2`       |
 | Estatística e Probabilidade                              | `estatistica`      |
 | Estágio Supervisionado                                   | `estagio`          |
@@ -58,12 +58,12 @@ Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os 
 | Princípios de Telecomunicações                           | `telecom`          |
 | Programação Orientada a Objetos                          | `POO`              |
 | Redes de Computadores                                    | `redes`            |
-| Sistemas de Controle 1                                   | `sis_ctr_1`        |
-| Sistemas de Controle 2                                   | `sis_ctr_2`        |
+| Sistemas de Controle 1                                   | `sist_ctr_1`       |
+| Sistemas de Controle 2                                   | `sist_ctr_2`       |
 | Sistemas Distribuídos 1                                  | `distribuidos_1`   |
 | Sistemas Microcontrolados                                | `micro`            |
 | Sistemas Operacionais                                    | `SO`               |
-| Teoria da Computação                                     | `teo_comp`      |
+| Teoria da Computação                                     | `teo_comp`         |
 | Trabalho de Conclusão de Curso 1                         | `TCC_1`            |
 | Trabalho de Conclusão de Curso 2                         | `TCC_2`            |
 
