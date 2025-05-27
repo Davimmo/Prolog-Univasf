@@ -159,6 +159,40 @@
             preRequisito('SO','distribuidos_1').
             preRequisito('redes','distribuidos_1').
             preRequisito('LRC','distribuidos_1').
+            
+        % Sétimo Período
+            %Principios de telecom
+            preRequisito('sinais','telecom').
+            %Sistemas de controle 1
+            preRequisito('sinais','sist_cont1').
+            %Computação gráfica
+            preRequisito('GA','comput_graf').
+            preRequisito('AED','comput_graf').
+            %Compiladores
+            preRequisito('LFA','compil').
+            preRequisito('AED','compil').
+            preRequisito('OAC','compil').
+            
+        % Oitavo Período
+            %Sistemas de controle 2
+            preRequisito('sist_cont1','sist_cont2').
+            %Metodologia
+            preRequisito('comunicacao','metodologia').
+            %Modelagem
+            preRequisito('estatistica','modelagem').  
+            preRequisito('OAC','modelagem').
+            preRequisito('eng_soft1','modelagem').
+            preRequisito('calc_num','modelagem').
+            %Teoria da computação
+            preRequisito('LFA','teo_comp').
+
+        %Nono Período
+            %Trabalho de conclusão de curso 2
+            preRequisito('TCC2','TCC1').
+            %Avaliação e desenvolvimento de sistemas
+            preRequisito('modelagem','aval_sist').
+            preRrequisito('redes','aval_sist').
+            preRequisito('distribuitos','aval_sist').
 
 
 
