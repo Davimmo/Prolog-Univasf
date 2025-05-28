@@ -294,3 +294,27 @@
     % 2. Se a disciplina tiver pre-requesitos ele deve ter cursados todos os pre-requesitos
     % 3. Se a disciplina tiver co-requesito a disciplina deve ser cursada em conjunto com esse
     %    co-requesito ou o co-requesito deve ja ter sido cursado
+
+    % Regra do final: verifica quais disciplinas o aluno pode cursar a partir das já cursadas
+
+% Verifica se o aluno pode cursar uma disciplina específica
+podeCursar(Aluno, Disciplina) :-
+    % Verifica se o aluno já não cursou a disciplina
+    \+ cursou(Aluno, Disciplina),
+    
+    % Verifica todos os pré-requisitos
+    forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)),
+    
+    % Verifica os co-requisitos (já cursou ou vai cursar junto)
+    forall(coRequesito(CoReq, Disciplina), 
+           (cursou(Aluno, CoReq) ; CoReq = Disciplina)).
+
+% Regra para listar todas as disciplinas que o aluno pode cursar
+disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
+    % Encontra todas as disciplinas do curso
+    findall(Disc, cargaHoraria(Disc, _), TodasDisciplinas),
+    
+    % Filtra apenas as que o aluno pode cursar
+    findall(Disc, 
+            (member(Disc, TodasDisciplinas), podeCursar(Aluno, Disc)), 
+            ListaDisciplinas).
