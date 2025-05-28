@@ -286,3 +286,11 @@
     cargaTotal(CT),
     Percent is CHC / CT,
     Percent >= 0.7.
+
+    % Verifica se o aluno pode cursar a disciplina
+    % As condições para o aluno cursar a disciplina são
+
+    % 1. Se a disciplina não tiver nenhum pre-requesito ele pode cursar
+    % 2. Se a disciplina tiver pre-requesitos ele deve ter cursados todos os pre-requesitos
+    % 3. Se a disciplina tiver co-requesito a disciplina deve ser cursada em conjunto com esse
+    %    co-requesito ou o co-requesito deve ja ter sido cursado
