@@ -3,7 +3,7 @@
         %Primeiro Período
             cargaHoraria('GA',60).
             cargaHoraria('C_1',60).
-            cargaHoraria('com_expr',60).
+            cargaHoraria('com_expr',30).
             cargaHoraria('alg_prog',90).
             cargaHoraria('int_eng_comp',30).
             cargaHoraria('discreta',60).
@@ -59,7 +59,7 @@
             cargaHoraria('meio_ambiente',30).
             cargaHoraria('compiladores',60).
             cargaHoraria('int_eng_eco',30).
-            cargaHoraria('eletiva_1',30).
+            cargaHoraria('eletiva_1',60).
         
         %Oitavo Périodo
             cargaHoraria('asp_legais',30).
@@ -88,23 +88,23 @@
 
         % Segundo Período
             %Álgebra
-            preRequesito('GA','algebra').
+            preRequisito('GA','algebra').
             %Calculo 2
-            preRequesito('C_1','C_2').
+            preRequisito('C_1','C_2').
             %Algoritimo e Estrutura de dados
-            preRequesito('AED','alg_prog').
+            preRequisito('AED','alg_prog').
             %Eletrônica digital
-            preRequesito('int_eng_comp','elt_dig').
+            preRequisito('int_eng_comp','elt_dig').
 
         %Terceiro Período
             %Lógica para computação
-            preRequesito('discreta','logica').
+            preRequisito('discreta','logica').
             %Física Teórica 2
-            preRequesito('fis_1','fis_2').
+            preRequisito('fis_1','fis_2').
             %Organização e Arquitetura de computadores
-            preRequesito('elt_dig','OAC').
+            preRequisito('elt_dig','OAC').
             %Laboratório de Organização e Arquitetura de computadores
-            preRequesito('elt_dig','LOAC').
+            preRequisito('elt_dig','LOAC').
 
         % Quarto Período
             % Calculo 4
@@ -199,9 +199,10 @@
         coRequesito('OAC','LOAC').
         coRequesito('circuitos','LCE').
         coRequesito('analogica','LEA').
-        coRequesito('BD_1','eng_soft_1')
+        coRequesito('BD_1','eng_soft_1').
 
     %Descrição dos alunos
+		%Ana
         cursou(ana, 'GA').
         cursou(ana, 'C_1').
         cursou(ana, 'com_expr').
@@ -246,6 +247,10 @@
         cursou(ana, 'comp_graf').
         cursou(ana, 'meio_ambiente').
         cursou(ana, 'compiladores').
+		cursou(ana, 'met_pesq').
+		cursou(ana,'eletiva_1').
+		cursou(ana,'eletiva_2').
+		cursou(ana,'empreendedorismo').
 
 
 
@@ -281,6 +286,3 @@
     cargaTotal(CT),
     Percent is CHC / CT,
     Percent >= 0.7.
-    
-
-    
