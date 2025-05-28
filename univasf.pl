@@ -195,17 +195,92 @@
             preRequisito('distribuidos_1','aval_sist').
 
     %Co-Requesitos
-        coRequesito('circuitos','LCE').
         coRequesito('elt_dig','LED').
         coRequesito('OAC','LOAC').
+        coRequesito('circuitos','LCE').
+        coRequesito('analogica','LEA').
+        coRequesito('BD_1','eng_soft_1')
 
-    %Alunos
+    %Descrição dos alunos
+        cursou(ana, 'GA').
+        cursou(ana, 'C_1').
+        cursou(ana, 'com_expr').
+        cursou(ana, 'alg_prog').
+        cursou(ana, 'int_eng_comp').
+        cursou(ana, 'discreta').
+        cursou(ana, 'algebra').
+        cursou(ana, 'C_2').
+        cursou(ana, 'fis_1').
+        cursou(ana, 'AED').
+        cursou(ana, 'elt_dig').
+        cursou(ana, 'LED').
+        cursou(ana, 'logica').
+        cursou(ana, 'fis_2').
+        cursou(ana, 'circuitos').
+        cursou(ana, 'LCE').
+        cursou(ana, 'OAC').
+        cursou(ana, 'LOAC').
+        cursou(ana, 'calc_num').
+        cursou(ana, 'C_4').
+        cursou(ana, 'fis_3').
+        cursou(ana, 'analogica').
+        cursou(ana, 'LEA').
+        cursou(ana, 'POO').
+        cursou(ana, 'estatistica').
+        cursou(ana, 'SO').
+        cursou(ana, 'redes').
+        cursou(ana, 'LRC').
+        cursou(ana, 'micro').
+        cursou(ana, 'sinais').
+        cursou(ana, 'BD_1').
+        cursou(ana, 'eng_soft_1').
+        cursou(ana, 'distribuidos_1').
+        cursou(ana, 'IA').
+        cursou(ana, 'LFA').
+        cursou(ana, 'eng_soft_2').
+        cursou(ana, 'IE').
+        cursou(ana, 'ADM').
+        cursou(ana, 'BD_2').
+        cursou(ana, 'telecom').
+        cursou(ana, 'sist_ctr_1').
+        cursou(ana, 'comp_graf').
+        cursou(ana, 'meio_ambiente').
+        cursou(ana, 'compiladores').
+
 
 
 %Regras
+    %Verificar se é uma disciplina é preRequesito
     ePreRequesito(X, Y) :- 
-        preRequesito(X, Y).  % caso base: X é pré-requisito direto de Y
+    preRequesito(X, Y).  % caso base: X é pré-requisito direto de Y
 
     ePreRequesito(X, Y) :- 
-        preRequesito(X, Z),  % caso recursivo: X é pré-requisito de Z
-        ePreRequesito(Z, Y). % e Z é pré-requisito (direto ou indireto) de Y
+    preRequesito(X, Z),  % caso recursivo: X é pré-requisito de Z
+    ePreRequesito(Z, Y). % e Z é pré-requisito (direto ou indireto) de Y
+
+    % Soma a carga horária total do curso
+    cargaTotal(Total) :- 
+    findall(CH, cargaHoraria(_, CH), Lista),
+    sumlist(Lista, Total).
+
+    % Soma a carga horária das disciplinas cursadas por um aluno
+    cargaCursada(Aluno, Total) :- 
+    findall(CH, (cursou(Aluno, Disc), cargaHoraria(Disc, CH)), Lista),
+    sumlist(Lista, Total).
+
+    %Verifica se o aluno pode fazer estágio
+    podeEstagiar(Aluno) :-
+    cargaCursada(Aluno, CHC),
+    cargaTotal(CT),
+    Percent is CHC / CT,
+    Percent >= 0.5.
+
+    %Verificar se o aluno pode fazer TCC_1
+    podeFazerTCC(Aluno) :-
+    cargaCursada(Aluno, CHC),
+    cargaTotal(CT),
+    Percent is CHC / CT,
+    Percent >= 0.7.
+    
+
+    
