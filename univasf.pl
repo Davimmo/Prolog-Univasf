@@ -328,40 +328,54 @@
     Foram criadas 4 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também nas regras 1, 2 e 3 TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
     */
 
-    % 1. Se a disciplina não tiver nenhum pre-Requisito o aluno pode cursar
-        podeCursar(Aluno,Disciplina):-
-            \+ cursou(Aluno,Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            \+ preRequisito(_,Disciplina).
+    % Regra principal - delega para casos específicos e mutuamente exclusivos
+    podeCursar(Aluno, Disciplina) :-
+        \+ cursou(Aluno, Disciplina), % Condição básica: aluno não cursou ainda
+        (   % Caso 1: TCC ou Estágio (regras especiais)
+            podeCursar_especial(Aluno, Disciplina)
+        ;   % Exclui TCC/Estágio dos casos gerais abaixo
+            Disciplina \= 'TCC_1',
+            Disciplina \= 'estagio',
+            (   % Caso 2: Disciplina COM co-requisito(s)
+                podeCursar_com_coreq(Aluno, Disciplina)
+            ;   % Caso 3: Disciplina COM pré-requisito(s) e SEM co-requisito(s)
+                podeCursar_com_prereq_sem_coreq(Aluno, Disciplina)
+            ;   % Caso 4: Disciplina SEM pré-requisitos e SEM co-requisitos
+                podeCursar_sem_reqs(Aluno, Disciplina)
+            )
+        ).
 
-    % 2. Se tiver pre-requisitos verifica se foram cumpridos
-        podeCursar(Aluno, Disciplina) :-
-            \+ cursou(Aluno, Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            \+ coRequisito(_,Disciplina),
-            
-            % Verifica todos os pré-requisitos
-            forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)).
-    
-    % 3. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar o co-requsito
-        podeCursar(Aluno,Disciplina) :-
-            \+cursou(Aluno,Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            %Verificação de se os pre-requisitos foram cumpridos
-            forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)),
-            coRequisito(CoReq,Disciplina),
-            (   cursou(Aluno,CoReq)
-            ;   podeCursar(Aluno,CoReq)
-            ).
+    % Caso 1: Regras especiais para TCC_1 e Estágio
+    podeCursar_especial(Aluno, 'TCC_1') :-
+        podeFazerTCC(Aluno).
+    podeCursar_especial(Aluno, 'estagio') :-
+        podeEstagiar(Aluno).
 
-    % 4. Se for TCC ou estagio verifica utilizando as regras próprias para cada
-        podeCursar(Aluno,Disciplina):-
-            \+ cursou(Aluno,Disciplina),
-            Disciplina=='estagio',podeEstagiar(Aluno);
-            Disciplina=='TCC_1',podeFazerTCC(Aluno).
+    % Caso 2: Disciplina COM co-requisito(s)
+    % Verifica se existe pelo menos um co-req, depois valida todos os pré-reqs e todos os co-reqs.
+    podeCursar_com_coreq(Aluno, Disciplina) :-
+        coRequisito(_, Disciplina), % Garante que existe PELO MENOS UM co-requisito
+        !, % Corte: Se tem co-req, não avalia casos 3 e 4
+        forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)), % Checa TODOS os pré-requisitos
+        forall(coRequisito(CoReq, Disciplina), % Checa TODOS os co-requisitos
+            ( cursou(Aluno, CoReq) ; podeCursar(Aluno, CoReq) )). % Co-req cursado OU pode cursar
+
+    % Caso 3: Disciplina COM pré-requisito(s) e SEM co-requisito(s)
+    % Verifica se existe pré-req e garante que NÃO existe co-req. Valida todos os pré-reqs.
+    podeCursar_com_prereq_sem_coreq(Aluno, Disciplina) :-
+        preRequisito(_, Disciplina),    % Garante que existe PELO MENOS UM pré-requisito
+        \+ coRequisito(_, Disciplina), % Garante que NÃO tem co-requisito
+        !, % Corte: Se tem pré-req e não tem co-req, não avalia caso 4
+        forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)). % Checa TODOS os pré-requisitos
+
+    % Caso 4: Disciplina SEM pré-requisitos e SEM co-requisitos
+    % Garante que NÃO tem pré-requisitos e NÃO tem co-requisitos.
+    podeCursar_sem_reqs(Aluno, Disciplina) :-
+        \+ preRequisito(_, Disciplina), % Garante que NÃO tem pré-requisito
+        \+ coRequisito(_, Disciplina), % Garante que NÃO tem co-requisito
+        !. % Corte final para clareza (assegura que esta é a última opção)
+        % Nenhuma outra condição a verificar neste caso mais simples.
+
             
     % Regra para listar todas as disciplinas que o aluno pode cursar
         disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
