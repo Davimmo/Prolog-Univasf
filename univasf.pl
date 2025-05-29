@@ -59,13 +59,13 @@
             cargaHoraria('meio_ambiente',30).
             cargaHoraria('compiladores',60).
             cargaHoraria('int_eng_eco',30).
-            cargaHoraria('eletiva_1',60).
+            cargaHoraria('met_pesq',30).
         
         %Oitavo Périodo
             cargaHoraria('asp_legais',30).
             cargaHoraria('sist_ctr_2',60).
             cargaHoraria('TCC_1',60).
-            cargaHoraria('met_pesq',30).
+            cargaHoraria('eletiva_1',60).
             cargaHoraria('modelagem',60).
             cargaHoraria('teo_comp',60).
             cargaHoraria('optativa_1',60).
@@ -158,7 +158,6 @@
             %Sistemas Distribuídos 1
             preRequisito('SO','distribuidos_1').
             preRequisito('redes','distribuidos_1').
-            preRequisito('LRC','distribuidos_1').
             
         % Sétimo Período
             %Principios de telecom
@@ -172,12 +171,12 @@
             preRequisito('LFA','compiladores').
             preRequisito('AED','compiladores').
             preRequisito('OAC','compiladores').
+            %Metodologia
+            preRequisito('com_exp','met_pesq').
             
         % Oitavo Período
             %Sistemas de controle 2
             preRequisito('sist_ctr_1','sist_ctr_2').
-            %Metodologia
-            preRequisito('com_exp','met_pesq').
             %Modelagem
             preRequisito('estatistica','modelagem').  
             preRequisito('OAC','modelagem').
