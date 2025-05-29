@@ -287,23 +287,15 @@
     Percent is CHC / CT,
     Percent >= 0.7.
 
-    % Verifica se o aluno pode cursar a disciplina
-    % As condições para o aluno cursar a disciplina são:
 
-    % 1. Se a disciplina não tiver nenhum pre-Requisito ele pode cursar
-    % 2. Se a disciplina tiver pre-Requisitos ele deve ter cursados todos os pre-Requisitos
-    % 3. Se a disciplina tiver co-Requisito a disciplina deve ser cursada em conjunto com esse
-    %    co-requisito ou o co-Requisito deve ja ter sido cursado
-
-    % Regra do final: verifica quais disciplinas o aluno pode cursar a partir das já cursadas
-
-    % Verifica se o aluno pode cursar uma disciplina específica
+    % 1. Se a disciplina não tiver nenhum pre-Requisito o aluno pode cursar
     podeCursar(Aluno,Disciplina):-
     	Disciplina\='TCC_1',
         Disciplina\='estagio',
         \+cursou(Aluno,Disciplina),
         \+ preRequisito(_,Disciplina).
 
+    % 2. Se tiver pre-requisitos verifica se foram cumpridos
     podeCursar(Aluno, Disciplina) :-
         Disciplina\='TCC_1',
         Disciplina\='estagio',
@@ -313,19 +305,22 @@
         
         % Verifica todos os pré-requisitos
         forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)).
-
+    
+    % 3. Se for TCC ou estagio verifica utilizando as regras próprias para cada
     podeCursar(Aluno,Disciplina):-
         \+ cursou(Aluno,Disciplina),
         Disciplina=='estagio',podeEstagiar(Aluno);
         Disciplina=='TCC_1',podeFazerTCC(Aluno).
 
+    % 4. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar
+    % o co-requsito
     podeCursar(Aluno,Disciplina) :-
     	Disciplina\='TCC_1',
         Disciplina\='estagio',
         \+cursou(Aluno,Disciplina),
-        coRequisito(CoReq,Disciplina),  % CoReq é definida aqui
-        (   cursou(Aluno,CoReq)        % E usada aqui...
-        ;   podeCursar(Aluno,CoReq)    % ...OU usada aqui
+        coRequisito(CoReq,Disciplina),
+        (   cursou(Aluno,CoReq)
+        ;   podeCursar(Aluno,CoReq)
         ).
             
     % Regra para listar todas as disciplinas que o aluno pode cursar
