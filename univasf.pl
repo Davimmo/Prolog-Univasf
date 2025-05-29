@@ -313,6 +313,8 @@
             \+cursou(Aluno,Disciplina),
             Disciplina\='TCC_1',
             Disciplina\='estagio',
+            %Verificação de se os pre-requisitos foram cumpridos
+            forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)),
             coRequisito(CoReq,Disciplina),
             (   cursou(Aluno,CoReq)
             ;   podeCursar(Aluno,CoReq)
