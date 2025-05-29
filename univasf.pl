@@ -324,10 +324,6 @@
         Percent is CHC / CT,
         Percent >= 0.7.
 
-    /*
-    Foram criadas 4 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também nas regras 1, 2 e 3 TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
-    */
-
     % Regra principal - delega para casos específicos e mutuamente exclusivos
     podeCursar(Aluno, Disciplina) :-
         \+ cursou(Aluno, Disciplina), % Condição básica: aluno não cursou ainda
