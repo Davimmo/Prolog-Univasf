@@ -287,41 +287,44 @@
     Percent is CHC / CT,
     Percent >= 0.7.
 
+    /*
+    Foram criadas 4 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
+    */
 
     % 1. Se a disciplina não tiver nenhum pre-Requisito o aluno pode cursar
     podeCursar(Aluno,Disciplina):-
+        \+ cursou(Aluno,Disciplina),
     	Disciplina\='TCC_1',
         Disciplina\='estagio',
-        \+cursou(Aluno,Disciplina),
         \+ preRequisito(_,Disciplina).
 
     % 2. Se tiver pre-requisitos verifica se foram cumpridos
     podeCursar(Aluno, Disciplina) :-
+        \+ cursou(Aluno, Disciplina),
         Disciplina\='TCC_1',
         Disciplina\='estagio',
         % Verifica se o aluno já não cursou a disciplina
-        \+ cursou(Aluno, Disciplina),
         \+ coRequisito(_,Disciplina),
         
         % Verifica todos os pré-requisitos
         forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)).
     
-    % 3. Se for TCC ou estagio verifica utilizando as regras próprias para cada
-    podeCursar(Aluno,Disciplina):-
-        \+ cursou(Aluno,Disciplina),
-        Disciplina=='estagio',podeEstagiar(Aluno);
-        Disciplina=='TCC_1',podeFazerTCC(Aluno).
-
-    % 4. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar
+    % 3. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar
     % o co-requsito
     podeCursar(Aluno,Disciplina) :-
+        \+cursou(Aluno,Disciplina),
     	Disciplina\='TCC_1',
         Disciplina\='estagio',
-        \+cursou(Aluno,Disciplina),
         coRequisito(CoReq,Disciplina),
         (   cursou(Aluno,CoReq)
         ;   podeCursar(Aluno,CoReq)
         ).
+
+    % 4. Se for TCC ou estagio verifica utilizando as regras próprias para cada
+    podeCursar(Aluno,Disciplina):-
+        \+ cursou(Aluno,Disciplina),
+        Disciplina=='estagio',podeEstagiar(Aluno);
+        Disciplina=='TCC_1',podeFazerTCC(Aluno).
             
     % Regra para listar todas as disciplinas que o aluno pode cursar
     disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
