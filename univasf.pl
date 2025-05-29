@@ -250,6 +250,44 @@
 		cursou(ana,'eletiva_1').
 		cursou(ana,'eletiva_2').
 		cursou(ana,'empreendedorismo').
+  
+    		%João
+  	cursou(joao, 'GA').
+	cursou(joao, 'C_1').
+	cursou(joao, 'com_expr').
+	cursou(joao, 'alg_prog').
+	cursou(joao, 'int_eng_comp').
+	cursou(joao, 'discreta').
+	cursou(joao, 'algebra').
+	cursou(joao, 'C_2').
+	cursou(joao, 'fis_1').
+	cursou(joao, 'AED').
+	cursou(joao, 'elt_dig').
+	cursou(joao, 'LED').
+	cursou(joao, 'logica').
+	cursou(joao, 'fis_exp').
+	cursou(joao, 'fis_2').
+	cursou(joao, 'circuitos').
+	cursou(joao, 'LCE').
+	cursou(joao, 'OAC').
+	cursou(joao, 'LOAC').
+	cursou(joao, 'calc_num').
+	cursou(joao, 'C_4').
+	cursou(joao, 'fis_3').
+	cursou(joao, 'analogica').
+	cursou(joao, 'LEA').
+	cursou(joao, 'POO').
+	cursou(joao, 'estatistica').
+	cursou(joao, 'SO').
+	cursou(joao, 'redes').
+	cursou(joao, 'LRC').
+	cursou(joao, 'micro').
+	cursou(joao,'empreendedorismo').
+	cursou(joao, 'met_pesq').
+	cursou(joao,'eletiva_1').
+	cursou(joao,'eletiva_2').
+	cursou(joao, 'comp_graf').
+
 
 
 
