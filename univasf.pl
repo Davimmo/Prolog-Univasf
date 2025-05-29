@@ -83,8 +83,8 @@
             cargaHoraria('estagio',240).
             cargaHoraria('optativa_4',60).
 
-    %Pre-Requesitos
-        %Primeiro Período não tem pre-requesitos
+    %Pre-Requisitos
+        %Primeiro Período não tem pre-Requisitos
 
         % Segundo Período
             %Álgebra
@@ -194,12 +194,12 @@
             preRequisito('redes','aval_sist').
             preRequisito('distribuidos_1','aval_sist').
 
-    %Co-Requesitos
-        coRequesito('elt_dig','LED').
-        coRequesito('OAC','LOAC').
-        coRequesito('circuitos','LCE').
-        coRequesito('analogica','LEA').
-        coRequesito('BD_1','eng_soft_1').
+    %Co-Requisitos
+        coRequisito('elt_dig','LED').
+        coRequisito('OAC','LOAC').
+        coRequisito('circuitos','LCE').
+        coRequisito('analogica','LEA').
+        coRequisito('BD_1','eng_soft_1').
 
     %Descrição dos alunos
 		%Ana
@@ -255,13 +255,13 @@
 
 
 %Regras
-    %Verificar se é uma disciplina é preRequesito
-    ePreRequesito(X, Y) :- 
-    preRequesito(X, Y).  % caso base: X é pré-requisito direto de Y
+    %Verificar se é uma disciplina é preRequisito
+    ePreRequisito(X, Y) :- 
+    preRequisito(X, Y).  % caso base: X é pré-requisito direto de Y
 
-    ePreRequesito(X, Y) :- 
-    preRequesito(X, Z),  % caso recursivo: X é pré-requisito de Z
-    ePreRequesito(Z, Y). % e Z é pré-requisito (direto ou indireto) de Y
+    ePreRequisito(X, Y) :- 
+    preRequisito(X, Z),  % caso recursivo: X é pré-requisito de Z
+    ePreRequisito(Z, Y). % e Z é pré-requisito (direto ou indireto) de Y
 
     % Soma a carga horária total do curso
     cargaTotal(Total) :- 
@@ -288,33 +288,52 @@
     Percent >= 0.7.
 
     % Verifica se o aluno pode cursar a disciplina
-    % As condições para o aluno cursar a disciplina são
+    % As condições para o aluno cursar a disciplina são:
 
-    % 1. Se a disciplina não tiver nenhum pre-requesito ele pode cursar
-    % 2. Se a disciplina tiver pre-requesitos ele deve ter cursados todos os pre-requesitos
-    % 3. Se a disciplina tiver co-requesito a disciplina deve ser cursada em conjunto com esse
-    %    co-requesito ou o co-requesito deve ja ter sido cursado
+    % 1. Se a disciplina não tiver nenhum pre-Requisito ele pode cursar
+    % 2. Se a disciplina tiver pre-Requisitos ele deve ter cursados todos os pre-Requisitos
+    % 3. Se a disciplina tiver co-Requisito a disciplina deve ser cursada em conjunto com esse
+    %    co-requisito ou o co-Requisito deve ja ter sido cursado
 
     % Regra do final: verifica quais disciplinas o aluno pode cursar a partir das já cursadas
 
-% Verifica se o aluno pode cursar uma disciplina específica
-podeCursar(Aluno, Disciplina) :-
-    % Verifica se o aluno já não cursou a disciplina
-    \+ cursou(Aluno, Disciplina),
-    
-    % Verifica todos os pré-requisitos
-    forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)),
-    
-    % Verifica os co-requisitos (já cursou ou vai cursar junto)
-    forall(coRequesito(CoReq, Disciplina), 
-           (cursou(Aluno, CoReq) ; CoReq = Disciplina)).
+    % Verifica se o aluno pode cursar uma disciplina específica
+    podeCursar(Aluno,Disciplina):-
+    	Disciplina\='TCC_1',
+        Disciplina\='estagio',
+        \+cursou(Aluno,Disciplina),
+        \+ preRequisito(_,Disciplina).
 
-% Regra para listar todas as disciplinas que o aluno pode cursar
-disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
-    % Encontra todas as disciplinas do curso
-    findall(Disc, cargaHoraria(Disc, _), TodasDisciplinas),
-    
-    % Filtra apenas as que o aluno pode cursar
-    findall(Disc, 
-            (member(Disc, TodasDisciplinas), podeCursar(Aluno, Disc)), 
-            ListaDisciplinas).
+    podeCursar(Aluno, Disciplina) :-
+        Disciplina\='TCC_1',
+        Disciplina\='estagio',
+        % Verifica se o aluno já não cursou a disciplina
+        \+ cursou(Aluno, Disciplina),
+        \+ coRequisito(_,Disciplina),
+        
+        % Verifica todos os pré-requisitos
+        forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)).
+
+    podeCursar(Aluno,Disciplina):-
+        \+ cursou(Aluno,Disciplina),
+        Disciplina=='estagio',podeEstagiar(Aluno);
+        Disciplina=='TCC_1',podeFazerTCC(Aluno).
+
+    podeCursar(Aluno,Disciplina) :-
+    	Disciplina\='TCC_1',
+        Disciplina\='estagio',
+        \+cursou(Aluno,Disciplina),
+        coRequisito(CoReq,Disciplina),  % CoReq é definida aqui
+        (   cursou(Aluno,CoReq)        % E usada aqui...
+        ;   podeCursar(Aluno,CoReq)    % ...OU usada aqui
+        ).
+            
+    % Regra para listar todas as disciplinas que o aluno pode cursar
+    disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
+        % Encontra todas as disciplinas do curso
+        findall(Disc, cargaHoraria(Disc, _), TodasDisciplinas),
+        
+        % Filtra apenas as que o aluno pode cursar
+        findall(Disc, 
+                (member(Disc, TodasDisciplinas), podeCursar(Aluno, Disc)), 
+                ListaDisciplinas).
