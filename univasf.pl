@@ -340,7 +340,6 @@
             \+ cursou(Aluno, Disciplina),
             Disciplina\='TCC_1',
             Disciplina\='estagio',
-            % Verifica se o aluno já não cursou a disciplina
             \+ coRequisito(_,Disciplina),
             
             % Verifica todos os pré-requisitos
