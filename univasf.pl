@@ -338,6 +338,7 @@
     % 2. Se tiver pre-requisitos verifica se foram cumpridos
         podeCursar(Aluno, Disciplina) :-
             \+ cursou(Aluno, Disciplina),
+            preRequisito(_,Disciplina),
             Disciplina\='TCC_1',
             Disciplina\='estagio',
             \+ coRequisito(_,Disciplina),
@@ -348,6 +349,7 @@
     % 3. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar o co-requsito
         podeCursar(Aluno,Disciplina) :-
             \+cursou(Aluno,Disciplina),
+            coRequisito(_,Disciplina),
             Disciplina\='TCC_1',
             Disciplina\='estagio',
             %Verificação de se os pre-requisitos foram cumpridos
