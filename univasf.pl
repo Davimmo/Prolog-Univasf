@@ -328,42 +328,50 @@
     Foram criadas 4 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também nas regras 1, 2 e 3 TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
     */
 
-    % 1. Se a disciplina não tiver nenhum pre-Requisito o aluno pode cursar
-        podeCursar(Aluno,Disciplina):-
-            \+ cursou(Aluno,Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            \+ preRequisito(_,Disciplina).
-
-    % 2. Se tiver pre-requisitos verifica se foram cumpridos
+    % 1. Estágio ou TCC
         podeCursar(Aluno, Disciplina) :-
             \+ cursou(Aluno, Disciplina),
-            preRequisito(_,Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            \+ coRequisito(_,Disciplina),
-            
-            % Verifica todos os pré-requisitos
-            forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)).
-    
-    % 3. Se a disciplina tiver co-requisitos verifica se ja foi cumprido ou se o aluno pode cursar o co-requsito
-        podeCursar(Aluno,Disciplina) :-
-            \+cursou(Aluno,Disciplina),
-            coRequisito(_,Disciplina),
-            Disciplina\='TCC_1',
-            Disciplina\='estagio',
-            %Verificação de se os pre-requisitos foram cumpridos
-            forall(preRequisito(PreReq, Disciplina), cursou(Aluno, PreReq)),
-            coRequisito(CoReq,Disciplina),
-            (   cursou(Aluno,CoReq)
-            ;   podeCursar(Aluno,CoReq)
+            (   Disciplina = 'estagio', podeEstagiar(Aluno), !
+            ;   Disciplina = 'TCC_1',   podeFazerTCC(Aluno), !
             ).
 
-    % 4. Se for TCC ou estagio verifica utilizando as regras próprias para cada
-        podeCursar(Aluno,Disciplina):-
-            \+ cursou(Aluno,Disciplina),
-            Disciplina=='estagio',podeEstagiar(Aluno);
-            Disciplina=='TCC_1',podeFazerTCC(Aluno).
+    % 2. Sem pré-requisitos nem co-requisitos
+        podeCursar(Aluno, Disciplina) :-
+            \+ cursou(Aluno, Disciplina),
+            Disciplina \= 'estagio',
+            Disciplina \= 'TCC_1',
+            \+ preRequisito(_, Disciplina),
+            \+ coRequisito(_, Disciplina), !.
+
+    % 3. Apenas pré-requisitos
+        podeCursar(Aluno, Disciplina) :-
+            \+ cursou(Aluno, Disciplina),
+            Disciplina \= 'estagio',
+            Disciplina \= 'TCC_1',
+            preRequisito(_, Disciplina),
+            \+ coRequisito(_, Disciplina),
+            forall(preRequisito(Pre, Disciplina), cursou(Aluno, Pre)), !.
+
+    % 4. Apenas co-requisitos
+        podeCursar(Aluno, Disciplina) :-
+            \+ cursou(Aluno, Disciplina),
+            Disciplina \= 'estagio',
+            Disciplina \= 'TCC_1',
+            \+ preRequisito(_, Disciplina),
+            coRequisito(_, Disciplina),
+            forall(coRequisito(Co, Disciplina),
+                (cursou(Aluno, Co) ; podeCursar(Aluno, Co))), !.
+
+    % 5. Pré e co-requisitos
+        podeCursar(Aluno, Disciplina) :-
+            \+ cursou(Aluno, Disciplina),
+            Disciplina \= 'estagio',
+            Disciplina \= 'TCC_1',
+            preRequisito(_, Disciplina),
+            coRequisito(_, Disciplina),
+            forall(preRequisito(Pre, Disciplina), cursou(Aluno, Pre)),
+            forall(coRequisito(Co, Disciplina),
+                (cursou(Aluno, Co) ; podeCursar(Aluno, Co))).
             
     % Regra para listar todas as disciplinas que o aluno pode cursar
         disciplinasDisponiveis(Aluno, ListaDisciplinas) :-
