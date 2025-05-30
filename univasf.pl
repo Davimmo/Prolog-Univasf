@@ -288,6 +288,23 @@
 	cursou(joao,'eletiva_2').
 	cursou(joao, 'comp_graf').
 
+		%Marta
+  	cursou(marta, 'GA').
+	cursou(marta, 'C_1').
+	cursou(marta, 'com_expr').
+	cursou(marta, 'alg_prog').
+	cursou(marta, 'int_eng_comp').
+	cursou(marta, 'discreta').
+	cursou(marta, 'algebra').
+	cursou(marta, 'C_2').
+	cursou(marta, 'fis_1').
+	cursou(marta, 'AED').
+	cursou(marta, 'elt_dig').
+	cursou(marta, 'LED').
+	cursou(marta, 'logica').
+	cursou(marta, 'fis_exp').
+	cursou(marta, 'fis_2').
+	cursou(marta, 'circuitos').
 
 
 
