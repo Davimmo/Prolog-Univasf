@@ -288,6 +288,47 @@
 	cursou(joao,'eletiva_2').
 	cursou(joao, 'comp_graf').
 
+		%Marta
+  	cursou(marta, 'GA').
+	cursou(marta, 'C_1').
+	cursou(marta, 'com_expr').
+	cursou(marta, 'alg_prog').
+	cursou(marta, 'int_eng_comp').
+	cursou(marta, 'discreta').
+	cursou(marta, 'algebra').
+	cursou(marta, 'C_2').
+	cursou(marta, 'fis_1').
+	cursou(marta, 'AED').
+	cursou(marta, 'elt_dig').
+	cursou(marta, 'LED').
+	cursou(marta, 'logica').
+	cursou(marta, 'fis_exp').
+	cursou(marta, 'fis_2').
+	cursou(marta, 'circuitos').
+
+ 		%Marcelo
+  	cursou(marcelo, 'GA').
+	cursou(marcelo, 'C_1').
+	cursou(marcelo, 'com_expr').
+	cursou(marcelo, 'alg_prog').
+	cursou(marcelo, 'int_eng_comp').
+	cursou(marcelo, 'discreta').
+	cursou(marcelo, 'algebra').
+	cursou(marcelo, 'C_2').
+	cursou(marcelo, 'fis_1').
+	cursou(marcelo, 'AED').
+	cursou(marcelo, 'elt_dig').
+	cursou(marcelo, 'LED').
+	cursou(marcelo, 'logica').
+	cursou(marcelo, 'fis_exp').
+	cursou(marcelo, 'fis_2').
+	cursou(marcelo, 'circuitos').
+	cursou(marcelo, 'calc_num').
+	cursou(marcelo, 'C_4').
+	cursou(marcelo, 'fis_3').
+	cursou(marcelo, 'POO').
+    	cursou(marcelo, 'BD_1').
+    	cursou(marcelo, 'eng_soft_1').	
 
 
 
