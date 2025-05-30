@@ -1,0 +1,29 @@
+.periodo {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  min-width: 180px;
+}
+
+.periodo-header {
+  background-color: #34495e;
+  color: white;
+  padding: 8px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+}
+
+.periodo-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.periodo-disciplinas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 0 0 8px 8px;
+  flex-grow: 1;
+}

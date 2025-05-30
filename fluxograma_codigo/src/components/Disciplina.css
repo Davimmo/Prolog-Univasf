@@ -1,0 +1,52 @@
+.disciplina {
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  max-width: 200px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.disciplina:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.disciplina-cursada {
+  background-color: #3498db;
+  color: white;
+}
+
+.disciplina-disponivel {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.disciplina-indisponivel {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.disciplina-codigo {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.disciplina-nome {
+  font-size: 0.85em;
+  margin: 5px 0;
+  flex-grow: 1;
+}
+
+.disciplina-carga {
+  font-size: 0.8em;
+  text-align: right;
+  opacity: 0.8;
+}
