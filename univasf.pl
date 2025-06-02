@@ -366,7 +366,7 @@
         Percent >= 0.7.
 
     /*
-    Foram criadas 4 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também nas regras 1, 2 e 3 TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
+    Foram criadas 5 regras para verificar se o aluno pode cursar uma determinada disciplina, em todas elas é excluida a disciplina caso o aluno ja a tenha cursado, exclui-se também nas regras 2, 3, 4 e 5 TCC 1 e estágio que seguem regras proprias tratadas na regra 4.
     */
 
     % 1. Estágio ou TCC
