@@ -1,5 +1,7 @@
 # Legenda de Disciplinas - Engenharia de Computação UNIVASF
 
+Repositório em: https://github.com/Davimmo/Prolog-Univasf
+
 Esta legenda mapeia as abreviações utilizadas no arquivo `univasf.pl` para os nomes completos das disciplinas do curso de Engenharia de Computação da UNIVASF em ordem alfabética.
 
 | Nome Completo                                            | Abreviação         |

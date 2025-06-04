@@ -1,0 +1,5 @@
+findall(Pre,ePreRequisito(Pre,'micro'),Lista)
+findall(Aluno,cursou(Aluno,'elt_dig'),Lista)
+podeCursar(marcelo,'sinais')
+setof(Aluno, Disciplina^(cursou(Aluno, Disciplina), podeCursar(Aluno, 'IA')), Lista).
+setof(Aluno, Disciplina^(cursou(Aluno, Disciplina), podeCursar(Aluno, 'estagio')), Lista).
