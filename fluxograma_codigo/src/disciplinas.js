@@ -78,7 +78,7 @@ const disciplinas = {
     periodo: 2, 
     cargaHoraria: 60, 
     preRequisitos: ['int_eng_comp'], 
-    coRequisitos: ['LED'] 
+    coRequisitos: [] 
   },
   'LED': { 
     nome: 'Laboratório de Eletrônica Digital', 
@@ -115,7 +115,7 @@ const disciplinas = {
     periodo: 3, 
     cargaHoraria: 60, 
     preRequisitos: [], 
-    coRequisitos: ['LCE'] 
+    coRequisitos: [] 
   },
   'LCE': { 
     nome: 'Laboratório de Circuitos Elétricos', 
@@ -129,7 +129,7 @@ const disciplinas = {
     periodo: 3, 
     cargaHoraria: 60, 
     preRequisitos: ['elt_dig'], 
-    coRequisitos: ['LOAC'] 
+    coRequisitos: [] 
   },
   'LOAC': { 
     nome: 'Laboratório de Organização e Arquitetura de Computadores', 
@@ -166,7 +166,7 @@ const disciplinas = {
     periodo: 4, 
     cargaHoraria: 60, 
     preRequisitos: ['circuitos'], 
-    coRequisitos: ['LEA'] 
+    coRequisitos: [] 
   },
   'LEA': { 
     nome: 'Laboratório de Eletrônica Analógica', 
@@ -203,7 +203,7 @@ const disciplinas = {
     periodo: 5, 
     cargaHoraria: 60, 
     preRequisitos: ['OAC'], 
-    coRequisitos: ['LRC'] 
+    coRequisitos: [] 
   },
   'LRC': { 
     nome: 'Laboratório de Redes de Computadores', 
